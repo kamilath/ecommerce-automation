@@ -6,17 +6,33 @@ import utils.ConfigReader;
 
 public class LoginPage extends BasePage {
 
-    private By username = By.cssSelector("[data-test='username']");
-    private By password = By.cssSelector("[data-test='password']");
-    private By loginButton = By.cssSelector("[data-test='login-button']");
+    private By username =
+            By.cssSelector("[data-test='username']");
+
+    private By password =
+            By.cssSelector("[data-test='password']");
+
+    private By loginButton =
+            By.cssSelector("[data-test='login-button']");
 
     public void open() {
-        driver.get(ConfigReader.get("url"));
+        driver.get(
+                ConfigReader.getEnvironmentValue("url")
+        );
     }
 
     public void login() {
-        type(username, ConfigReader.get("username"));
-        type(password, ConfigReader.get("password"));
+
+        type(
+                username,
+                ConfigReader.getEnvironmentValue("username")
+        );
+
+        type(
+                password,
+                ConfigReader.getEnvironmentValue("password")
+        );
+
         click(loginButton);
     }
 
